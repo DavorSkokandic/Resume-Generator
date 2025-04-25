@@ -3,8 +3,9 @@ import Home from './pages/home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Builder from './pages/Builder';
-import Dashboard from './pages/Dashboard';
 import Checkout from './pages/Checkout';
+import About from './pages/About';
+import Prices from './pages/Prices';
 
 export default function AppRoutes() {
   return (
@@ -13,8 +14,8 @@ export default function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/builder" element={<Builder />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/checkout" element={<Checkout />} />
+      <Route path='/About' element={<About />} />
+      <Route path='/Prices' element={<Prices />} />
     </Routes>
   );
 }
