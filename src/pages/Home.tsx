@@ -1,80 +1,112 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Home(){
-    return (
-        <div className="bg-gray-50 text-gray-800 font-sans antialiased">
-          {/* Hero Section */}
-          <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 to-blue-100 px-6 py-24">
-            <div className="container mx-auto text-center">
-              <h1 className="text-5xl md:text-6xl font-extrabold text-indigo-700 mb-8 leading-tight">
-                Craft Your Perfect Resume <span className="text-blue-600">in Minutes</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-12">
-                Unlock your career potential with our intuitive resume builder. Create professional, ATS-friendly resumes effortlessly.
-              </p>
-              <Link
-                to="/builder"
-                className="inline-block bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 text-lg rounded-full shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl"
-              >
-                Get Started <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </section>
-    
-          {/* Features Section */}
-          <section className="bg-white py-24 px-6">
-            <div className="container mx-auto">
-              <h2 className="text-3xl font-semibold text-center text-indigo-700 mb-16">
-                Key Features
-              </h2>
-              <div className="grid md:grid-cols-3 gap-12">
-                <div className="p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out text-center">
-                  <h3 className="text-2xl font-semibold text-indigo-600 mb-4">Intuitive Interface</h3>
-                  <p className="text-gray-700">
-                    Build your resume with our easy-to-use, drag-and-drop interface.
-                  </p>
-                </div>
-                <div className="p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out text-center">
-                  <h3 className="text-2xl font-semibold text-indigo-600 mb-4">Professional Templates</h3>
-                  <p className="text-gray-700">
-                    Choose from a wide variety of modern, ATS-optimized templates.
-                  </p>
-                </div>
-                <div className="p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out text-center">
-                  <h3 className="text-2xl font-semibold text-indigo-600 mb-4">Effortless Export</h3>
-                  <p className="text-gray-700">
-                    Download your resume in PDF format, ready to impress employers.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-    
-          {/* Call-to-Action Section */}
-          <section className="bg-indigo-600 text-white py-24 px-6 text-center">
-            <div className="container mx-auto">
-              <h2 className="text-4xl font-bold mb-8 leading-tight">
-                Ready to Land Your Dream Job?
-              </h2>
-              <p className="text-xl mb-12">
-                Start creating your professional resume today. It's free and easy!
-              </p>
-              <Link
-                to="/builder"
-                className="inline-block bg-white text-indigo-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-indigo-100 transition-colors duration-300 ease-in-out"
-              >
-                Build My Resume Now
-              </Link>
-            </div>
-          </section>
-    
-          {/* Footer */}
-          <footer className="bg-gray-100 py-8 text-center text-sm text-gray-500">
-            <p>© {new Date().getFullYear()} ResumeGen. All rights reserved.</p>
-          </footer>
+function Home() {
+  return (
+    <div className="bg-gray-100 min-h-screen p-4">
+    <div className="container mx-auto space-y-8">
+      <h1 className="text-3xl font-bold text-gray-900 text-center">Tailwind CSS Comprehensive Test</h1>
+
+      {/* Layout */}
+      <section className="bg-white p-6 rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">Layout</h2>
+        <div className="flex flex-row flex-wrap justify-between items-center gap-4">
+          <div className="w-32 h-16 bg-red-500 rounded-md"></div>
+          <div className="w-32 h-16 bg-green-500 rounded-md"></div>
+          <div className="w-32 h-16 bg-blue-500 rounded-md"></div>
+          <div className="w-full h-12 bg-yellow-500 rounded-md"></div>
         </div>
-      );
-}
+         <div className="grid grid-cols-2 gap-4 mt-4">
+          <div>First Column</div>
+          <div>Second Column</div>
+         </div>
+      </section>
+
+      {/* Typography */}
+      <section className="bg-white p-6 rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">Typography</h2>
+        <p className="text-sm text-gray-500">This is small text.</p>
+        <p className="text-base text-gray-700">This is base text.</p>
+        <p className="text-lg font-medium text-gray-800">This is large, medium text.</p>
+        <p className="text-2xl font-bold text-gray-900">This is extra-large, bold text.</p>
+        <p className="font-italic">This is italic text.</p>
+        <p className="underline">This is underlined text.</p>
+      </section>
+
+      {/* Colors */}
+      <section className="bg-white p-6 rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">Colors</h2>
+        <div className="flex flex-wrap gap-4">
+          <div className="w-20 h-20 rounded-full bg-red-500 text-white flex items-center justify-center">Red</div>
+          <div className="w-20 h-20 rounded-full bg-green-500 text-white flex items-center justify-center">Green</div>
+          <div className="w-20 h-20 rounded-full bg-blue-500 text-white flex items-center justify-center">Blue</div>
+          <div className="w-20 h-20 rounded-full bg-yellow-500 text-gray-900 flex items-center justify-center">Yellow</div>
+          <div className="w-20 h-20 rounded-full bg-purple-500 text-white flex items-center justify-center">Purple</div>
+          <div className="text-gray-400">Gray Text</div>
+        </div>
+      </section>
+
+      {/* Borders */}
+      <section className="bg-white p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">Borders</h2>
+          <div className="border-2 border-dashed border-blue-500 p-4 rounded-md">
+            Dashed Blue Border
+          </div>
+          <div className="border-4 border-green-500 rounded-lg p-4">
+             Green Border Rounded
+          </div>
+          <div className="border-8 border-red-500 rounded-full w-32 h-32 mx-auto"></div>
+      </section>
+
+      {/* Effects */}
+      <section className="bg-white p-6 rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">Effects</h2>
+        <div className="hover:bg-gray-200 transition-colors p-4 rounded-md cursor-pointer">
+          Hoverable Div
+        </div>
+        <div className="shadow-md rounded-md p-4">
+          Small Shadow
+        </div>
+        <div className="shadow-lg rounded-md p-4">
+          Large Shadow
+        </div>
+        <div className="opacity-50 rounded-md p-4">
+          50% Opacity
+        </div>
+         <div className="blur-sm rounded-md p-4">
+          Blur
+        </div>
+      </section>
+
+      {/* Forms */}
+      <section className="bg-white p-6 rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">Forms</h2>
+        <input
+          type="text"
+          placeholder="Enter text"
+          className="border p-2 rounded-md w-full mb-4"
+        />
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
+          Submit
+        </button>
+      </section>
+
+       {/* Interactivity */}
+      <section className="bg-white p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">Interactivity</h2>
+          <button
+          className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md
+                      transition-colors duration-300 focus:outline-none focus:ring-2
+                      focus:ring-purple-400 focus:ring-offset-2"
+          >
+          Hover, Focus, and Transition
+          </button>
+      </section>
+    </div>
+  </div>
+  );
+};
+
+
 
 export default Home;

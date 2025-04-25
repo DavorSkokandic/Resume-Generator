@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 function Header()
 { return(
-    <header className="bg-white shadow-md p-4 flex justify-between items-center">
+    <header className="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 ">
         <Link to="/" className="text-2xl font-bold text-blue-600">Resume Generator</Link>
         <nav className="space-x-4">
             <Link to="builder" className="text-gray-700 hover:text-blue-600">Builder</Link>
