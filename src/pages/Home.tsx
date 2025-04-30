@@ -10,7 +10,7 @@ function Home() {
         <p className="text-xl mb-8 text-[#3F7D58] max-w-2xl mx-auto">
           Your first resume is 100% free – with powerful templates and unlimited downloads.
         </p>
-        <Link to="/builder" className="bg-[#EC5228] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#EF9651] transition">
+        <Link to="/dashboard" className="bg-[#EC5228] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#EF9651] transition">
           Get Started – It's Free 
         </Link>
       </section>
@@ -48,7 +48,7 @@ function Home() {
       {/* Footer CTA */}
       <footer className="bg-[#3F7D58] text-white text-center py-12">
         <h2 className="text-2xl font-bold mb-4">Ready to create your resume?</h2>
-        <Link to="/builder" className="bg-white text-[#3F7D58] font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition">
+        <Link to="/dashboard" className="bg-white text-[#3F7D58] font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition">
           Start Now
         </Link>
       </footer>
