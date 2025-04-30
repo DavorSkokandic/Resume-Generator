@@ -15,7 +15,7 @@ function Prices(){
             {/* Plans Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Free Plan */}
-              <div className="bg-white shadow-md rounded-xl p-8 border-t-4 border-[#EF9651]">
+              <div className="bg-white shadow-md rounded-xl p-8 border-t-4 border-[#EF9651] hover:scale-105">
                 <h2 className="text-2xl font-bold text-[#3F7D58] mb-4">Free</h2>
                 <p className="text-gray-600 mb-6">Perfect for trying things out.</p>
                 <ul className="text-sm space-y-2 mb-6">
@@ -31,7 +31,7 @@ function Prices(){
               </div>
     
               {/* Pro Plan */}
-              <div className="bg-white shadow-lg rounded-xl p-8 border-t-4 border-[#EC5228] scale-105">
+              <div className="bg-white shadow-lg rounded-xl p-8 border-t-4 border-[#EC5228] scale-105 hover:scale-110">
                 <h2 className="text-2xl font-bold text-[#3F7D58] mb-4">Pro</h2>
                 <p className="text-gray-600 mb-6">For serious job seekers.</p>
                 <ul className="text-sm space-y-2 mb-6">
@@ -47,7 +47,7 @@ function Prices(){
               </div>
     
               {/* Team Plan */}
-              <div className="bg-white shadow-md rounded-xl p-8 border-t-4 border-[#3F7D58]">
+              <div className="bg-white shadow-md rounded-xl p-8 border-t-4 border-[#3F7D58] hover:scale-105">
                 <h2 className="text-2xl font-bold text-[#3F7D58] mb-4">Team</h2>
                 <p className="text-gray-600 mb-6">Collaborate and manage resumes in a team.</p>
                 <ul className="text-sm space-y-2 mb-6">

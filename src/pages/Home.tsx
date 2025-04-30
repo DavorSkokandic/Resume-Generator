@@ -11,7 +11,7 @@ function Home() {
           Your first resume is 100% free – with powerful templates and unlimited downloads.
         </p>
         <Link to="/builder" className="bg-[#EC5228] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#EF9651] transition">
-          Get Started – It's Free 🚀
+          Get Started – It's Free 
         </Link>
       </section>
 
