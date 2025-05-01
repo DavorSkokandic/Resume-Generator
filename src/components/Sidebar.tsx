@@ -1,22 +1,65 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
+import {
+  FileText,
+  Edit,
+  LogIn,
+  UserPlus,
+} from 'lucide-react';
 
 const Sidebar = () => {
+  const location = useLocation();
+
+  const isActive = (path: string) =>
+    location.pathname === path
+      ? 'bg-[#EC5228]/10 text-[#EC5228]'
+      : 'text-gray-700 hover:text-[#EC5228]';
+
   return (
-    <div className="bg-[#EFEFEF] w-64 h-full flex flex-col justify-between p-4">
+    <aside className="bg-[#EFEFEF] w-64 h-screen px-6 py-8 flex flex-col justify-between shadow-md">
+      {/* Logo / Branding */}
       <div>
-        <h1 className="text-2xl font-bold text-[#3F7D58] mb-6">ResumeCraft</h1>
-        <ul className="space-y-2">
-          <li><Link className="font-semibold" to="/dashboard">Resume</Link></li>
-          <li><Link to="/cover-letter">Cover Letter</Link></li>
-        
-        </ul>
+        <h1 className="text-3xl font-bold text-[#3F7D58] mb-8">ResumeCraft</h1>
+
+        {/* Navigation */}
+        <nav className="flex flex-col space-y-4">
+          <Link
+            to="/dashboard"
+            className={`flex items-center gap-3 px-3 py-2 rounded-md font-medium transition ${isActive('/dashboard')}`}
+          >
+            <FileText className="w-5 h-5" />
+            Resume
+          </Link>
+
+          <Link
+            to="/cover-letter"
+            className={`flex items-center gap-3 px-3 py-2 rounded-md font-medium transition ${isActive('/cover-letter')}`}
+          >
+            <Edit className="w-5 h-5" />
+            Cover Letter
+          </Link>
+        </nav>
       </div>
-      <div className="space-y-2">
-        <Link className="w-full border-2 border-[#3F7D58] py-2 rounded" to='/login'>Login</Link>
-        <Link className="w-full bg-[#3F7D58] text-white py-2 rounded" to='/signup'>Signup</Link>
+
+      {/* Auth Links */}
+      <div className="space-y-3">
+        <Link
+          to="/login"
+          className="flex items-center justify-center gap-2 border border-[#3F7D58] text-[#3F7D58] hover:bg-[#3F7D58]/10 py-2 rounded-md font-semibold text-sm transition"
+        >
+          <LogIn className="w-4 h-4" />
+          Login
+        </Link>
+
+        <Link
+          to="/signup"
+          className="flex items-center justify-center gap-2 bg-[#3F7D58] text-white hover:bg-[#3F7D58]/90 py-2 rounded-md font-semibold text-sm transition"
+        >
+          <UserPlus className="w-4 h-4" />
+          Signup
+        </Link>
       </div>
-    </div>
+    </aside>
   );
 };
 
-export default Sidebar
+export default Sidebar;

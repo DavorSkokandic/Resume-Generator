@@ -1,71 +1,50 @@
-import React from 'react';
-import { useState } from 'react';
-import StepIndicator from '../components/StepIndicator';
-import NavigationButtons from '../components/NavigationButtons';
-import StepWrapper from '../components/StepWrapper';
+// src/pages/Builder.tsx
+import React, { useRef, useState } from 'react';
+import { useResumeContext } from '../context/ResumeContext';
+import StepIndicator  from '../components/StepIndicator';
+import { FormSteps } from '../components/FormSteps';
+import { ResumePreview } from '../components/ResumePreview';
+import { PDFExport } from '../components/PDFExport';
+const steps = [  // Moved 'steps' array outside the component
+  'Personal',
+  'Summary',
+  'Experience',
+  'Education',
+  'Skills',
+  'Projects',
+  'Certifications',
+  'Languages',
+  'Hobbies',
+];
 
-const steps = [
-    'Personal Info',
-    'Summary',
-    'Experience',
-    'Education',
-    'Skills',
-    'Projects',
-    'Certifications',
-    'Languages',
-    'Links',
-    'Finish',
-  ];
-
-const Builder: React.FC = () =>{
-
-    const [currentStep, setCurrentStep] = useState(0);
-    const handleNext = () => {
-        if(currentStep<steps.length-1) setCurrentStep(prev => prev+1)
-    };
-const handleBack = () => {
-    if(currentStep>0) setCurrentStep(prev => prev-1)
-};
-
-    return(
-        <div className="min-h-screen bg-[#EFEFEF] px-4 py-8 md:px-16 lg:px-24">
-            <StepIndicator steps ={steps} currentStep={currentStep}/>
-            {currentStep === 0 && (
-        <StepWrapper
-          title="Personal Information"
-          description="Fill in your contact details so employers can reach you."
-        >
-          <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#EC5228]"
-              placeholder="First Name"
-              type="text"
-            />
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#EC5228]"
-              placeholder="Last Name"
-              type="text"
-            />
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#EC5228]"
-              placeholder="Email Address"
-              type="email"
-            />
-            <input
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#EC5228]"
-              placeholder="Phone Number"
-              type="tel"
-            />
-            <input
-              className="col-span-1 sm:col-span-2 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#EC5228]"
-              placeholder="Location (City, Country)"
-              type="text"
-            />
-          </form>
-        </StepWrapper>
-      )}
-
-      <NavigationButtons onNext={handleNext} onBack={handleBack} currentStep={currentStep} totalSteps={steps.length} />
+const Builder: React.FC = () => {
+  const { selectedTemplate } = useResumeContext();
+  const resumeRef = useRef<HTMLDivElement>(null);
+  const [currentStep, setCurrentStep] = useState(0);
+  
+  if (!selectedTemplate) {
+    return <p className="p-4 text-red-500">No template selected. Please go back and choose one.</p>;
+  }
+  
+  return (
+    <div className="flex min-h-screen">
+      {/* Form Section */}
+      <div className="w-1/2 overflow-y-auto p-6 bg-[#EFEFEF]">
+        <StepIndicator steps={steps} currentStep={currentStep}/>
+        <FormSteps />
+      </div>
+      
+      {/* Live Preview */}
+      <div className="w-1/2 bg-white p-6 overflow-y-auto">
+        <div className="sticky top-0 z-10 bg-white pb-4 mb-4 flex justify-between items-center">
+          <h2 className="text-xl font-bold">Preview</h2>
+          <PDFExport targetRef={resumeRef} />
+        </div>
+        
+        <div ref={resumeRef}>
+          <ResumePreview />
+        </div>
+      </div>
     </div>
   );
 };
