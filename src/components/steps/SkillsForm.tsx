@@ -14,8 +14,8 @@ const SkillsForm: React.FC = () => {
   };
 
   const removeSkill = (index: number) => {
-    const updated = formData.skills.filter((_, i) => i !== index);
-    updateFormData('skills', updated);
+    const updatedSkills = formData.skills.filter((_, i) => i !== index);
+    updateFormData('skills', updatedSkills);
   };
 
   return (
