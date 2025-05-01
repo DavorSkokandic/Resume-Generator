@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/home';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Builder from './pages/Builder';
-import Checkout from './pages/Checkout';
+import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import Prices from './pages/Prices';
 
@@ -16,6 +16,7 @@ export default function AppRoutes() {
       <Route path="/builder" element={<Builder />} />
       <Route path='/About' element={<About />} />
       <Route path='/Prices' element={<Prices />} />
+      <Route path='/Dashboard' element={<Dashboard />}/>
     </Routes>
   );
 }
