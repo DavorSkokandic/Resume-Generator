@@ -37,7 +37,7 @@ const LanguagesForm: React.FC = () => {
             <input
               type="text"
               value={lang.name}
-              onChange={e => updateLanguage(index, 'language', e.target.value)}
+              onChange={e => updateLanguage(index, 'name', e.target.value)}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
             />
           </div>

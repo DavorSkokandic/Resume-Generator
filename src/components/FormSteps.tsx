@@ -2,7 +2,7 @@
 import React from 'react';
 import { useResumeContext } from '../context/ResumeContext';
 import { useMultiStepForm } from '../hooks/useMultiStepForm';
-import { PersonalInfoForm } from './steps/PersonalInfoForm';
+import PersonalInfoForm  from './steps/PersonalInfoForm';
 import  SummaryForm  from './steps/SummaryForm';
 import ExperienceForm  from './steps/ExperienceForm';
 import  EducationForm  from './steps/EducationForm';

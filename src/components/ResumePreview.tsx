@@ -2,7 +2,7 @@
 import React from 'react';
 import { useResumeContext } from '../context/ResumeContext';
 import  ModernTemplate  from '../templates/ModernTemplate';
-//import { ClassicTemplate } from '../templates/ClassicTemplate';
+import CleanTemplate  from '../templates/ClassicTemplate';
 
 export const ResumePreview: React.FC = () => {
   const { selectedTemplate, formData } = useResumeContext();
@@ -11,8 +11,8 @@ export const ResumePreview: React.FC = () => {
   switch (selectedTemplate) {
     case 'modern':
       return <ModernTemplate  />;
-    case 'classic':
-      //return <ClassicTemplate data={formData} />;
+    case 'clean':
+      return <CleanTemplate />;
     default:
       return <ModernTemplate />;
   }

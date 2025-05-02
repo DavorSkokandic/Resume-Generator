@@ -5,6 +5,7 @@ import StepIndicator  from '../components/StepIndicator';
 import { FormSteps } from '../components/FormSteps';
 import { ResumePreview } from '../components/ResumePreview';
 import { PDFExport } from '../components/PDFExport';
+import TemplateSwitcher from '../components/TemplateSwitcher';
 const steps = [  // Moved 'steps' array outside the component
   'Personal',
   'Summary',
@@ -37,7 +38,9 @@ const Builder: React.FC = () => {
       {/* Live Preview */}
       <div className="w-1/2 bg-white p-6 overflow-y-auto">
         <div className="sticky top-0 z-10 bg-white pb-4 mb-4 flex justify-between items-center">
+        <TemplateSwitcher/>
           <h2 className="text-xl font-bold">Preview</h2>
+          
           <PDFExport targetRef={resumeRef} />
         </div>
         

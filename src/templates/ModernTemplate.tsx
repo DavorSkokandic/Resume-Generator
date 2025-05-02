@@ -1,26 +1,38 @@
-import React from "react";
+import React from 'react';
 import { useResumeContext } from "../context/ResumeContext";
 
 const ModernTemplate: React.FC = () => {
   const { formData } = useResumeContext();
 
+  // Define RGB color values
+  const primaryColor = 'rgb(63, 125, 88)';          // #3F7D58
+  const headingColor = 'rgb(34, 34, 34)';           // #222
+  const mutedTextColor = 'rgb(107, 114, 128)';      // gray-500
+  const sectionTitleColor = 'rgb(63, 125, 88)';
+  const white = 'rgb(255, 255, 255)';
+
   return (
-    <div className="max-w-a4 mx-auto bg-white shadow-lg rounded-lg overflow-hidden text-[#222] border border-gray-200 print:shadow-none print:border-none">
+    <div
+      className="max-w-a4 mx-auto rounded-lg overflow-hidden border print:shadow-none print:border-none"
+      style={{ backgroundColor: white, boxShadow: '0 0 10px rgba(0,0,0,0.08)', borderColor: '#E5E7EB' }}
+    >
       {/* Header */}
-      <div className="bg-[#3F7D58] text-white p-8 pb-6 flex flex-col items-center">
-        <h1 className="text-3xl font-bold tracking-tight">{formData.name || "Your Name"}</h1>
-        <p className="text-lg mt-1">{formData.title || "Your Title"}</p>
-        <div className="flex flex-wrap gap-4 mt-4 text-sm justify-center">
+      <div style={{ backgroundColor: primaryColor, color: white }} className="p-8 pb-6 flex flex-col items-center">
+        <h1 style={{ fontSize: '1.875rem', fontWeight: 'bold', letterSpacing: '-0.02em' }}>
+          {formData.name || "Your Name"}
+        </h1>
+        <p style={{ fontSize: '1.125rem', marginTop: '0.25rem' }}>{formData.title || "Your Title"}</p>
+        <div className="flex flex-wrap gap-4 mt-4 justify-center" style={{ fontSize: '0.875rem' }}>
           {formData.email && <span>{formData.email}</span>}
           {formData.phone && <span>{formData.phone}</span>}
           {formData.location && <span>{formData.location}</span>}
           {formData.linkedin && (
-            <a href={formData.linkedin} target="_blank" rel="noopener noreferrer" className="underline">
+            <a href={formData.linkedin} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', color: white }}>
               LinkedIn
             </a>
           )}
           {formData.website && (
-            <a href={formData.website} target="_blank" rel="noopener noreferrer" className="underline">
+            <a href={formData.website} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', color: white }}>
               Website
             </a>
           )}
@@ -28,35 +40,39 @@ const ModernTemplate: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="p-8 space-y-8">
+      <div className="p-8 space-y-8" style={{ color: headingColor }}>
         {/* Summary */}
         {formData.summary && (
           <section>
-            <h2 className="text-xl font-semibold text-[#3F7D58] mb-2">Professional Summary</h2>
-            <p className="text-gray-800">{formData.summary}</p>
+            <h2 style={{ color: sectionTitleColor, fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+              Professional Summary
+            </h2>
+            <p style={{ color: mutedTextColor }}>{formData.summary}</p>
           </section>
         )}
 
         {/* Experience */}
-        {formData.experience && formData.experience.length > 0 && (
+        {formData.experience?.length > 0 && (
           <section>
-            <h2 className="text-xl font-semibold text-[#3F7D58] mb-2">Work Experience</h2>
+            <h2 style={{ color: sectionTitleColor, fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+              Work Experience
+            </h2>
             <div className="space-y-4">
-              {formData.experience.map((exp: any, idx: number) => (
+              {formData.experience.map((exp, idx) => (
                 <div key={exp.id || idx}>
                   <div className="flex justify-between items-center">
                     <div>
-                      <span className="font-semibold">{exp.title}</span>
-                      {exp.company && <span className="ml-2 text-gray-700">@ {exp.company}</span>}
-                      {exp.location && <span className="ml-2 text-gray-500">({exp.location})</span>}
+                      <span style={{ fontWeight: 600 }}>{exp.title}</span>
+                      {exp.company && <span style={{ color: mutedTextColor, marginLeft: '0.5rem' }}>@ {exp.company}</span>}
+                      {exp.location && <span style={{ color: mutedTextColor, marginLeft: '0.5rem' }}>({exp.location})</span>}
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div style={{ color: mutedTextColor, fontSize: '0.875rem' }}>
                       {exp.startDate} - {exp.current ? "Present" : exp.endDate}
                     </div>
                   </div>
-                  {exp.description && exp.description.length > 0 && (
-                    <ul className="list-disc list-inside mt-2 text-gray-700">
-                      {exp.description.map((desc: string, i: number) =>
+                  {exp.description?.length > 0 && (
+                    <ul style={{ marginTop: '0.5rem', paddingLeft: '1rem', listStyle: 'disc', color: mutedTextColor }}>
+                      {exp.description.map((desc, i) =>
                         desc ? <li key={i}>{desc}</li> : null
                       )}
                     </ul>
@@ -68,24 +84,26 @@ const ModernTemplate: React.FC = () => {
         )}
 
         {/* Education */}
-        {formData.education && formData.education.length > 0 && (
+        {formData.education?.length > 0 && (
           <section>
-            <h2 className="text-xl font-semibold text-[#3F7D58] mb-2">Education</h2>
+            <h2 style={{ color: sectionTitleColor, fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+              Education
+            </h2>
             <div className="space-y-4">
-              {formData.education.map((edu: any, idx: number) => (
+              {formData.education.map((edu, idx) => (
                 <div key={edu.id || idx}>
                   <div className="flex justify-between items-center">
                     <div>
-                      <span className="font-semibold">{edu.degree}</span>
-                      {edu.school && <span className="ml-2 text-gray-700">@ {edu.school}</span>}
-                      {edu.location && <span className="ml-2 text-gray-500">({edu.location})</span>}
+                      <span style={{ fontWeight: 600 }}>{edu.degree}</span>
+                      {edu.school && <span style={{ color: mutedTextColor, marginLeft: '0.5rem' }}>@ {edu.school}</span>}
+                      {edu.location && <span style={{ color: mutedTextColor, marginLeft: '0.5rem' }}>({edu.location})</span>}
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div style={{ color: mutedTextColor, fontSize: '0.875rem' }}>
                       {edu.startDate} - {edu.endDate}
                     </div>
                   </div>
                   {edu.description && (
-                    <p className="mt-1 text-gray-700">{edu.description}</p>
+                    <p style={{ color: mutedTextColor, marginTop: '0.25rem' }}>{edu.description}</p>
                   )}
                 </div>
               ))}
@@ -94,14 +112,20 @@ const ModernTemplate: React.FC = () => {
         )}
 
         {/* Skills */}
-        {formData.skills && formData.skills.length > 0 && (
+        {formData.skills?.length > 0 && (
           <section>
-            <h2 className="text-xl font-semibold text-[#3F7D58] mb-2">Skills</h2>
+            <h2 style={{ color: sectionTitleColor, fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Skills</h2>
             <div className="flex flex-wrap gap-2">
-              {formData.skills.map((skill: string, idx: number) => (
+              {formData.skills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="bg-[#3F7D58] text-white px-3 py-1 rounded-full text-sm"
+                  style={{
+                    backgroundColor: primaryColor,
+                    color: white,
+                    padding: '0.25rem 0.75rem',
+                    borderRadius: '9999px',
+                    fontSize: '0.875rem',
+                  }}
                 >
                   {skill}
                 </span>
@@ -111,27 +135,27 @@ const ModernTemplate: React.FC = () => {
         )}
 
         {/* Projects */}
-        {formData.projects && formData.projects.length > 0 && (
+        {formData.projects?.length > 0 && (
           <section>
-            <h2 className="text-xl font-semibold text-[#3F7D58] mb-2">Projects</h2>
+            <h2 style={{ color: sectionTitleColor, fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Projects</h2>
             <div className="space-y-4">
-              {formData.projects.map((project: any, idx: number) => (
+              {formData.projects.map((project, idx) => (
                 <div key={project.id || idx}>
                   <div className="flex justify-between items-center">
-                    <span className="font-semibold">{project.title}</span>
+                    <span style={{ fontWeight: 600 }}>{project.title}</span>
                     {project.link && (
                       <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#3F7D58] underline text-sm"
+                        style={{ color: primaryColor, textDecoration: 'underline', fontSize: '0.875rem' }}
                       >
                         Link
                       </a>
                     )}
                   </div>
                   {project.description && (
-                    <p className="mt-1 text-gray-700">{project.description}</p>
+                    <p style={{ color: mutedTextColor, marginTop: '0.25rem' }}>{project.description}</p>
                   )}
                 </div>
               ))}
@@ -140,15 +164,15 @@ const ModernTemplate: React.FC = () => {
         )}
 
         {/* Certifications */}
-        {formData.certifications && formData.certifications.length > 0 && (
+        {formData.certifications?.length > 0 && (
           <section>
-            <h2 className="text-xl font-semibold text-[#3F7D58] mb-2">Certifications</h2>
+            <h2 style={{ color: sectionTitleColor, fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Certifications</h2>
             <ul className="space-y-2">
-              {formData.certifications.map((cert: any, idx: number) => (
+              {formData.certifications.map((cert, idx) => (
                 <li key={cert.id || idx}>
-                  <span className="font-semibold">{cert.title}</span>
-                  {cert.issuer && <span className="ml-2 text-gray-700">({cert.issuer})</span>}
-                  {cert.date && <span className="ml-2 text-gray-500">{cert.date}</span>}
+                  <span style={{ fontWeight: 600 }}>{cert.title}</span>
+                  {cert.issuer && <span style={{ color: mutedTextColor, marginLeft: '0.5rem' }}>({cert.issuer})</span>}
+                  {cert.date && <span style={{ color: mutedTextColor, marginLeft: '0.5rem' }}>{cert.date}</span>}
                 </li>
               ))}
             </ul>
@@ -156,15 +180,15 @@ const ModernTemplate: React.FC = () => {
         )}
 
         {/* Languages */}
-        {formData.languages && formData.languages.length > 0 && (
+        {formData.languages?.length > 0 && (
           <section>
-            <h2 className="text-xl font-semibold text-[#3F7D58] mb-2">Languages</h2>
+            <h2 style={{ color: sectionTitleColor, fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Languages</h2>
             <ul className="flex flex-wrap gap-4">
-              {formData.languages.map((lang: any, idx: number) => (
-                <li key={lang.id || idx} className="text-gray-800">
-                  {lang.language}
+              {formData.languages.map((lang, idx) => (
+                <li key={lang.id || idx} style={{ color: mutedTextColor }}>
+                  {lang.name}
                   {lang.proficiency && (
-                    <span className="ml-1 text-gray-500">({lang.proficiency})</span>
+                    <span style={{ marginLeft: '0.25rem' }}>({lang.proficiency})</span>
                   )}
                 </li>
               ))}
@@ -175,8 +199,8 @@ const ModernTemplate: React.FC = () => {
         {/* Hobbies */}
         {formData.hobbies && (
           <section>
-            <h2 className="text-xl font-semibold text-[#3F7D58] mb-2">Hobbies & Interests</h2>
-            <p className="text-gray-800">{formData.hobbies}</p>
+            <h2 style={{ color: sectionTitleColor, fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Hobbies & Interests</h2>
+            <p style={{ color: mutedTextColor }}>{formData.hobbies}</p>
           </section>
         )}
       </div>

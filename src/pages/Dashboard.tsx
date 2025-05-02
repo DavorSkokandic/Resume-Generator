@@ -1,11 +1,14 @@
-import React from'react';
-import {Link} from 'react-router-dom'
-import  Sidebar from "../components/Sidebar";
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import Sidebar from "../components/Sidebar";
+import TemplatePickerModal from '../components/TemplatePickerModal';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+
   const savedResumes = [
     { id: 1, name: "Resume 1", updated: "6 mins ago" },
-    // mock data – this will later be fetched from storage/db
   ];
 
   return (
@@ -14,15 +17,16 @@ const Dashboard = () => {
       <main className="flex-1 p-8">
         <h2 className="text-3xl font-bold text-[#3F3F3F] mb-8">My Resumes</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div className="border-2 border-dashed rounded-lg p-6 text-center hover:shadow flex items-center justify-center flex-col">
-            <div className="text-4xl text-gray-500 flex items-center justify-center cursor-pointer">
-            <Link to="/builder">+</Link>  
-            </div>
-            <div className="text-gray-600 font-semibold mt-2 flex justify-center cursor-pointer">
-               <Link to="/builder">New resume</Link>
-
-            </div>
+          {/* Create new */}
+          <div
+            className="border-2 border-dashed rounded-lg p-6 text-center hover:shadow flex items-center justify-center flex-col cursor-pointer"
+            onClick={() => setShowModal(true)}
+          >
+            <div className="text-4xl text-gray-500">+</div>
+            <div className="text-gray-600 font-semibold mt-2">New Resume</div>
           </div>
+
+          {/* Resumes */}
           {savedResumes.map((resume) => (
             <div key={resume.id} className="bg-white rounded-lg shadow p-4">
               <div className="h-48 bg-[#3F7D58] rounded mb-4"></div>
@@ -32,8 +36,16 @@ const Dashboard = () => {
           ))}
         </div>
       </main>
+
+      <TemplatePickerModal
+        isOpen={showModal}
+        onSelectTemplate={() => {
+          setShowModal(false);
+          navigate('/builder');
+        }}
+      />
     </div>
   );
 };
 
-export default Dashboard
+export default Dashboard;

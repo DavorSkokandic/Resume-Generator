@@ -2,7 +2,7 @@
 import React from 'react';
 import { useResumeContext } from '../../context/ResumeContext';
 
-export const PersonalInfoForm: React.FC = () => {
+const PersonalInfoForm: React.FC = () => {
   const { formData, updateFormData } = useResumeContext();
   
   return (
@@ -83,3 +83,4 @@ export const PersonalInfoForm: React.FC = () => {
     </div>
   );
 };
+export default PersonalInfoForm;
