@@ -18,8 +18,9 @@ const Sidebar = () => {
     <aside className="bg-[#EFEFEF] w-64 h-screen px-6 py-8 flex flex-col justify-between shadow-md">
       {/* Logo / Branding */}
       <div>
-        <h1 className="text-3xl font-bold text-[#3F7D58] mb-8">ResumeCraft</h1>
-
+        <div className='mb-8'>
+        <Link to="/" className="text-3xl font-bold text-[#3F7D58] mb-12">ResumeCraft</Link>
+        </div>
         {/* Navigation */}
         <nav className="flex flex-col space-y-4">
           <Link

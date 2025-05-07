@@ -46,7 +46,7 @@ export const FormSteps: React.FC = () => {
         {!isFirstStep && (
           <button
             onClick={back}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+            className="px-4 py-2 bg-[#EC5228] hover:bg-[#d4481f] rounded"
           >
             Back
           </button>
