@@ -43,6 +43,7 @@ const Dashboard = () => {
           setShowModal(false);
           navigate('/builder');
         }}
+        onClose={() => setShowModal(false)}
       />
     </div>
   );

@@ -1,6 +1,7 @@
 // src/components/TemplatePickerModal.tsx
 import React from 'react';
 import { useResumeContext } from '../context/ResumeContext';
+import { useEffect } from 'react';
 
 interface TemplateOption {
   id: string;
@@ -11,11 +12,25 @@ interface TemplateOption {
 interface Props {
   isOpen: boolean;
   onSelectTemplate: () => void;
+  onClose: () => void;
 }
 
-const TemplatePickerModal: React.FC<Props> = ({ isOpen, onSelectTemplate }) => {
+const TemplatePickerModal: React.FC<Props> = ({ isOpen, onSelectTemplate, onClose }) => {
   const { setSelectedTemplate } = useResumeContext();
 
+ 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
   if (!isOpen) return null;
 
   return (
