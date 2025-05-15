@@ -11,7 +11,7 @@ interface TemplateOption {
 
 interface Props {
   isOpen: boolean;
-  onSelectTemplate: () => void;
+  onSelectTemplate: (template: string) => void;
   onClose: () => void;
 }
 
@@ -46,7 +46,7 @@ const TemplatePickerModal: React.FC<Props> = ({ isOpen, onSelectTemplate, onClos
               key={template.id}
               onClick={() => {
                 setSelectedTemplate(template.id);
-                onSelectTemplate();
+                //onSelectTemplate();
               }}
               className="cursor-pointer border rounded-md overflow-hidden hover:ring-2 ring-[#3F7D58] transition"
             >
